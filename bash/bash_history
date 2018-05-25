@@ -1,0 +1,209 @@
+sudo apt-get install adb
+adb devices
+adb connect 192.168.1.104:5555
+exit
+ls /dev/
+hello
+ll
+cd Downloads
+ls
+sync
+cd /dev/
+ls
+cd disk
+ls
+ls *
+cd ../
+ls
+cd usb
+ls
+cd ../
+ls -l
+lsblk
+drives
+vim ~/.bashrc
+sudo apt-get install vim
+vim ~/.bashrc
+source ~/.bashrc
+listDrives 
+ls
+lsusb
+lslogins 
+lsmod
+lsattr 
+cd
+lsattr 
+cd 
+cd Downloads/
+lsattr 
+lsb_release 
+lsblk 
+umount /dev/mmcblkp1
+umount /dev/mmcblk1p1 
+fdisk /dev/mmcblk1p1 
+sudo apt-get install fdisk
+fdisk
+exit
+ls
+ls dotfiles/
+mv .bash_aliases dotfiles/bash/aliases
+sudo apt-get install stow
+cd dotfiles/
+stow help
+stow --help
+stow -t ~/
+stow -t ~/ -d=~/dotfiles
+stow -t ~/ -d ~/dotfiles bash 
+ls ..
+ls -la
+ls -l ..
+ll
+ls bash/aliases 
+ls bash
+ls *
+ls ..
+stow -D bash
+ls
+ls ..
+cd 
+stow bash
+stow dotfiles/bash/
+cd dotfiles/
+stow bash
+ls ..
+stow -D bash
+stow aliases
+stow -D aliases
+stow -D bash
+ls
+touch bash/bashrc
+stow bash
+ls
+ls ..
+rm bash/aliases 
+ls ..
+stow 
+stow bash
+ls ..
+stow bash
+stow -R bash
+ls ..
+mv bash/.bashrc
+mv bash/bashrc bash/.bashrc
+stow -R bash
+ls bash/
+ls -la
+ls -la bash/
+rm bash/.bashrc
+cd
+ls
+stow -D bash
+stow -D dotfiles/bash
+cd dotfiles/
+stow -D bash
+cd..
+..
+cd ..
+ls
+adb devices
+adb tcpip 5555
+adb connect 192.168.1.104:5555
+adb devices
+l
+ln -s ~/dotfiles/bash/ ./.bash
+ls
+ls ..
+ls -a
+cd .bash
+ls
+ls 0ka
+ls -l
+ls -a
+cd ../
+cd dotfiles/
+ls -la
+ls -la bash/
+vim bash/aliases
+vim bash/personal_settings
+vim bash/aliases
+mv bash/aliases bash/aliases.bashrc
+mv bash/personal_settings bash/personal_settings.bashrc
+vim bash/personal_settings.bashrc 
+cd bash
+ls
+vim *
+which bash
+mv aliases.bashrc alises
+mv alises aliases
+mv personal_settings.bashrc personal_settings
+vim -O *
+exit
+lsdrives
+cd dotfiles/
+mkdir vim
+ln -s ~/dotfiles/vim ~/.vim
+mv .bashrc ~/dotfiles/bash/bashrc
+mv ../.bashrc ~/dotfiles/bash/bashrc
+ln -s ~/dotfiles/bash/bashrc ~/.bashrc
+ls
+rm ~/.bash
+rm ~/.vim
+vim bash/bashrc 
+cp bash/personal_settings vim/
+vim vim/personal_settings 
+ll
+ls
+cd ..
+ls
+vim .bashrc
+ls /sbin/
+vim .bashrc
+vim .vimrc
+touch dotfiles/vim/vimrc
+ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+vim ~/.vimrc
+vim .bashrc
+vim ~/dotfiles/vim/personal_settings 
+which vim
+vim ~/dotfiles/vim/personal_settings 
+vim dotfiles/vim/personal_settings.vim
+mv dotfiles/vim/personal_settings dotfiles/vim/personal_settings.vim
+vim .vimrc
+ls
+ls -k
+ls -l
+ls -la
+cd vim
+d .vim
+ls
+cd .vim
+ls
+ls -a
+cd ..
+mv .vim/.netrwhist dotfiles/vim/
+ln -s ~/dotfiles/vim/ .vim
+ll
+rm -rf .vim
+ln -s ~/dotfiles/vim/ .vim
+ll
+cat .viminfo 
+mv .viminfo dotfiles/vim/viminfo
+ln -s ~/dotfiles/vim/viminfo ~/.viminfo
+ls
+ll
+mv .bash_history dotfiles/bash/bash_history
+ln -s ~/dotfiles/bash/bash_history ~/.bash_history
+mv .bash_logout dotfiles/bash/bash_logout
+ln -s ~/dotfiles/bash/bash_logout ~/.bash_logout
+ls
+ll
+vim .profile 
+vim dotfiles/bash/personal_settings 
+exit
+fdisk
+ls /sbin/
+vim ~/.bashrc
+ll
+listDrives 
+bash
+exit

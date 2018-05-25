@@ -1,0 +1,2 @@
+source ~/dotfiles/vim/personal_settings.vim
+source ~/dotfiles/vim/pathogen_personal.vim
