@@ -1,6 +1,0 @@
-set nu
-set rnu
-
-
-
-

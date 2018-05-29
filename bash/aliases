@@ -1,8 +1,0 @@
-#!/bin/bash
-
-alias ..='cd ..'
-alias ...='cd ../..'
-
-alias gs='git status'
-
-alias lsdrives='lslblk'

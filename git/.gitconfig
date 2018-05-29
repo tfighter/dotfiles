@@ -1,0 +1,7 @@
+[user]
+	name = rehabrowing
+	email = tai.nguyen.1220@gmail.com
+[alias]
+	addall = add *
+	ci = commit
+	co = checkout
