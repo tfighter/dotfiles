@@ -1,9 +1,24 @@
 {
+    "alias": "rehabrowing",
     "auto_connect": true,
     "config_version": 2,
+    "console-history": [],
+    "currency": "USD",
+    "decimal_point": 8,
+    "depth_level": 4,
+    "dynamic_fees": true,
+    "fiat_address": true,
+    "gui_last_wallet": "/home/av8t8r/.electrum/wallets/default_wallet",
+    "history_rates": false,
+    "is_maximized": false,
+    "mempool_fees": true,
+    "num_zeros": 5,
     "recently_open": [
         "/home/av8t8r/.electrum/wallets/default_wallet"
     ],
     "rpcpassword": "jYGDgrjAP4ET1nFmGg4lWQ==",
-    "rpcuser": "user"
+    "rpcuser": "user",
+    "show_addresses_tab": true,
+    "use_exchange": "BitPay",
+    "use_exchange_rate": true
 }
