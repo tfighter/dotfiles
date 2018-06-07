@@ -5,10 +5,11 @@
 	addall = "add *"
 	ci = "commit"
 	co = "checkout"
-	tree = "git log --graph --oneline --all"
-	dag = "git log --graph --pretty=oneline --abbrev-commit"
+	lg1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+	lg2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+	tree = "!git lg1"   # "log --graph --oneline --all"
+	dag = "!git lg2"    # "log --graph --pretty=oneline --abbrev-commit"
 	ec = "config --global -e"
 	up = "!git pull --rebase --prune $@ && git submodule update --init --recursive"
-	#rb = "!git rebase -i `git merge-base master HEAD`"
 [push]
 	default = simple
