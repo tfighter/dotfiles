@@ -1,18 +1,28 @@
 #!/bin/bash
 
-# backups current dotfiles in home
-mv .bash_history .bash_history.bak
-mv .bash_logout .bash_history.bak
-mv .bashrc .bashrc.bak
+# potential dotfiles @$HOME that might get overwritten
+to_backup=(
+    .bashrc
+)
+
+# backup important dotfile(s) if it's not a symlink
+for dot_file in "${to_backup[@]}"; do
+    if [[ ! -L "~/$dot_file" ]]; then
+        mv "~/$dot_file" "~/$dot_file.bak"
+    fi;
+done;
 
 
 # download stow if not installed
-if stow  ; then
+if ! stow --version >/dev/null 2>&1 ; then
+    echo -e "stow not detected. Running \"sudo apt-get install stow\"..."
     sudo apt-get install stow
-    echo -e "stow is now installed. Moving on to syncing with GitHub."
 fi
 
+echo -e "Synchronizing stowed packages...\n"
+
 # initialize all dotfiles and their respective symlinks
-for DOTFILE in $(ls -dA  * ); do
-    stow $DOTFILE
+for dot_file in $(ls -dA  */ ); do
+    echo -e "stow $dot_file..."
+    stow $dot_file
 done
