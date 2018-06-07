@@ -6,6 +6,5 @@ alias ...='cd ../..'
 alias gs='git status'
 alias gd='git diff --cached'
 alias gitroot='cd $(git rev-parse --show-toplevel)'
-alias grb='git rebase -i HEAD~'
 
 alias lsdrives='lslblk'

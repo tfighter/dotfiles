@@ -96,18 +96,25 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
+# Alias definitions and various other files to source.
+# 
 # You may want to put all your additions into a separate file like
 # ~/.aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash/aliases ]; then
-    . ~/.bash/aliases
-fi
+additional_sources=(
+    aliases
+    functions
+    personal_settings
+    post_chroot_script
+)
 
-if [ -f ~/.bash/personal_settings ]; then
-    . ~/.bash/personal_settings 
-fi
+for sources in "${additional_sources[*]}"; do
+    if [[ -f "~/.bash/$sources" || -L "~/.bash/$sources" ]]; then
+        . ~/.bash/$sources
+    fi
+done;
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -120,13 +127,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-(nohup node ~/.crouton-clipboard/server.js > /dev/null 2>&1 &)                                                                          
-
-# post-processing script in chroot
-post_sh="~/.bash/post_chroot_script"
-if [ -f $post_sh || -L $post_sh  ]; then
-    . $post_sh
-fi
-
-
-
+(nohup node ~/.crouton-clipboard/server.js > /dev/null 2>&1 &)
