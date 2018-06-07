@@ -1,10 +1,14 @@
 [user]
-	name = tfighter
-	email = tai.nguyen.1220@gmail.com
+	name = "tfighter"
+	email = "tai.nguyen.1220@gmail.com"
 [alias]
-	addall = add *
-	ci = commit
-	co = checkout
-	tree = git log --graph --oneline --all
-	dag = git log --graph --pretty=oneline --abbrev-commit
-
+	addall = "add *"
+	ci = "commit"
+	co = "checkout"
+	tree = "git log --graph --oneline --all"
+	dag = "git log --graph --pretty=oneline --abbrev-commit"
+	ec = "config --global -e"
+	up = "!git pull --rebase --prune $@ && git submodule update --init --recursive"
+	#rb = "!git rebase -i `git merge-base master HEAD`"
+[push]
+	default = simple

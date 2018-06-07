@@ -123,6 +123,10 @@ fi
 (nohup node ~/.crouton-clipboard/server.js > /dev/null 2>&1 &)                                                                          
 
 # post-processing script in chroot
-if [ -f ~/.bash/post_chroot_script ]; then
-    . ~/.bash/post_chroot_script
+post_sh="~/.bash/post_chroot_script"
+if [ -f $post_sh || -L $post_sh  ]; then
+    . $post_sh
 fi
+
+
+
