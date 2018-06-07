@@ -106,12 +106,16 @@ additional_sources=(
     aliases
     functions
     personal_settings
-    post_chroot_script
+    post_chroot_script.sh
 )
 
 for sources in "${additional_sources[*]}"; do
     if [[ -f "~/.bash/$sources" || -L "~/.bash/$sources" ]]; then
-        . ~/.bash/$sources
+	if [[ "$sources" = *".sh" ]]; then
+	    . ~/.bash/$sources;
+	else 
+	    source ~/.bash/$sources
+	fi
     fi
 done;
 
