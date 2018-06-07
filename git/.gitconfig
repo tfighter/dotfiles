@@ -1,7 +1,10 @@
 [user]
-	name = rehabrowing
+	name = tfighter
 	email = tai.nguyen.1220@gmail.com
 [alias]
 	addall = add *
 	ci = commit
 	co = checkout
+	tree = git log --graph --oneline --all
+	dag = git log --graph --pretty=oneline --abbrev-commit
+
