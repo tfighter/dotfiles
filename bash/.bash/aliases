@@ -2,6 +2,7 @@
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias lr='find .'
 
 alias gs='git status'
 alias gd='git diff --cached'
@@ -10,4 +11,3 @@ alias gitroot='cd $(git rev-parse --show-toplevel)'
 alias lsdrives='lslblk'
 alias gpg='gpg2'
 alias ebash='vim ~/.bash; source ~/.bashrc'
-

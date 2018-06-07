@@ -1,6 +1,3 @@
 set nu
 set rnu
 
-
-
-

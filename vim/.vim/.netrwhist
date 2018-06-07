@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/av8t8r/.bash'
-let g:netrw_dirhist_2='/home/av8t8r'
-let g:netrw_dirhist_3='/home/av8t8r/.bash'
