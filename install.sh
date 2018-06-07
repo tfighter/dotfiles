@@ -23,6 +23,8 @@ echo -e "Synchronizing stowed packages...\n"
 
 # initialize all dotfiles and their respective symlinks
 for dot_file in $(ls -dA  */ ); do
-    echo -e "stow $dot_file..."
-    stow $dot_file
+    echo -e "stow $dot_file"
+    stow -R $dot_file
 done
+
+echo -e "\nDone!"
