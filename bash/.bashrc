@@ -25,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -109,13 +109,10 @@ additional_sources=(
     post_chroot_script.sh
 )
 
-for sources in "${additional_sources[*]}"; do
-    if [[ -f "~/.bash/$sources" || -L "~/.bash/$sources" ]]; then
-	if [[ "$sources" = *".sh" ]]; then
-	    . ~/.bash/$sources;
-	else 
-	    source ~/.bash/$sources
-	fi
+for sources in "${additional_sources[@]}"; do
+    srcPath="$HOME/.bash/$sources"
+    if [[ -f "$srcPath" || -L "$srcPath" ]]; then
+        . "$srcPath";
     fi
 done;
 
