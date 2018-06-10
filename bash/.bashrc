@@ -106,7 +106,7 @@ additional_sources=(
     aliases
     functions
     personal_settings
-    post_chroot_script.sh
+    #post_chroot_script.sh
 )
 
 for sources in "${additional_sources[@]}"; do
@@ -129,3 +129,5 @@ if ! shopt -oq posix; then
 fi
 
 (nohup node ~/.crouton-clipboard/server.js > /dev/null 2>&1 &)
+
+fortune | cowsay
