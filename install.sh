@@ -3,12 +3,15 @@
 # potential dotfiles @$HOME that might get overwritten
 to_backup=(
     .bashrc
+    .bash_logout
+    .profile
 )
 
 # backup important dotfile(s) if it's not a symlink
 for dot_file in "${to_backup[@]}"; do
-    if [[ ! -L "~/$dot_file" ]]; then
-        mv "~/$dot_file" "~/$dot_file.bak"
+    if [[ ! -L "$HOME/$dot_file" ]]; then
+	echo "Backed up $dot_file to $dot_file.bak"
+        mv "$HOME/$dot_file" "$HOME/$dot_file.bak"
     fi;
 done;
 
@@ -28,3 +31,6 @@ for dot_file in $(ls -dA  */ ); do
 done
 
 echo -e "\nDone!"
+
+source $HOME/.bashrc
+
