@@ -130,6 +130,6 @@ fi
 
 (nohup node ~/.crouton-clipboard/server.js > /dev/null 2>&1 &)
 
-[[ -f ${HOME}/adb-fastboot.sh ]] && source ${HOME}/adb-fastboot.sh
+[[ -f ${HOME}/.adb-fastboot.sh ]] && source ${HOME}/.adb-fastboot.sh
 
 fortune | cowsay

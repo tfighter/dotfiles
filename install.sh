@@ -36,7 +36,7 @@ done;
 for package in "${apt_packages[@]}"; do
 	if [[  "command -v $package" > "/dev/null" ]] ; then
 		echo -e "\n$package not detected. Running \"sudo apt-get install $package\"..."
-		yes | sudo apt-get install "$package"
+		sudo apt-get install -y "$package"
 	fi
 done;
 
@@ -44,8 +44,13 @@ done;
 echo -e "\nre-initializing vim-plugins..."
 cd vim/.vim/bundle
 for plugin in "${vim_plugins[@]}"; do
-	echo -e "\ngit clone https://github.com/$plugin"
-	git clone "https://github.com/$plugin"
+		plugin_dir=$(echo "$plugin" | awk -F'\/' '{ print $2 }')
+
+		# git clones plugin if plugin folder is empty.
+		if [ ! "$(ls -A $plugin_dir)" ]; then
+				echo -e "\ngit clone https://github.com/$plugin"
+				git clone "https://github.com/$plugin"
+		fi;
 done;
 	
 
@@ -61,4 +66,3 @@ done
 echo -e "\nDone!"
 
 source $HOME/.bashrc
-
