@@ -6,6 +6,8 @@ to_backup=(
     .bash_logout
     .profile
     .sudo_as_admin_successful
+    .zshrc
+    .zsh_history
 )
 
 
@@ -63,6 +65,21 @@ for dot_file in $(ls -dA  $HOME/dotfiles/*/ | awk -F'\/' '{print $5}'); do
 done
 
 
+
+
+echo "sourcing proper shell file: $SHELL"
+case "$SHELL" in
+		"$(which bash)")
+				. $HOME/.bashrc
+				;;
+		"$(which zsh)")
+				. $HOME/.zshrc
+				;;
+		*)
+
+				echo -e "[ERROR] Can't locate proper shell file to source from"
+				exit -1
+esac
+
 echo -e "\nDone!"
 
-source $HOME/.bashrc
