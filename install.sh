@@ -36,7 +36,7 @@ done;
 
 # download apt packages if not present
 for package in "${apt_packages[@]}"; do
-	if [[  "command -v $package" > "/dev/null" ]] ; then
+	if [[ ! "command -v $package" > "/dev/null" ]] ; then
 		echo -e "\n$package not detected. Running \"sudo apt-get install $package\"..."
 		sudo apt-get install -y "$package"
 	fi
