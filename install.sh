@@ -12,12 +12,15 @@ to_backup=(
 
 
 apt_packages=(
+    terminator
+    wget
     stow
     xstow
     cowsay
     fortune
     vim
     gpg
+    most
 )
 
 vim_plugins=(
