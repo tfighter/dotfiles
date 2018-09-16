@@ -88,7 +88,7 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # change pager to most to leverage color built-in color support
-export PAGER="most"
+#export PAGER="most"
 
 # some more ls aliases
 alias ll='ls -alF'

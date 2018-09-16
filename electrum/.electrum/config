@@ -1,7 +1,7 @@
 {
     "alias": "rehabrowing",
     "auto_connect": true,
-    "config_version": 2,
+    "config_version": 3,
     "console-history": [],
     "currency": "USD",
     "decimal_point": 8,
@@ -14,6 +14,8 @@
     "mempool_fees": true,
     "num_zeros": 5,
     "recently_open": [
+        "/home/8v8t8r/.electrum/wallets/wallet_1",
+        "/home/8v8t8r/.electrum/wallets/default_wallet",
         "/home/av8t8r/.electrum/wallets/default_wallet"
     ],
     "rpcpassword": "jYGDgrjAP4ET1nFmGg4lWQ==",
