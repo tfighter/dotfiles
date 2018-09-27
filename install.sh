@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # potential dotfiles @$HOME that might get overwritten
 to_backup=(
     .bashrc
@@ -46,7 +47,7 @@ for package in "${apt_packages[@]}"; do
 done;
 
 # git clone all plugins
-echo -e "\nre-initializing vim-plugins..."
+echo -e "\nre-initializing vim-plugins...\n"
 cd vim/.vim/bundle
 for plugin in "${vim_plugins[@]}"; do
 		plugin_dir=$(echo "$plugin" | awk -F'\/' '{ print $2 }')
@@ -62,15 +63,13 @@ done;
 echo -e "\nSynchronizing stowed packages...\n"
 
 # initialize all dotfiles and their respective symlinks
-for dot_file in $(ls -dA  $HOME/dotfiles/*/ | awk -F'\/' '{print $5}'); do
+for dot_file in $(ls -dA  */ | awk -F'\/' '{print $5}'); do
     echo -e "stow $dot_file"
-    stow -R $dot_file -d $HOME/dotfiles -t $HOME
+    stow -R $dot_file
 done
 
 
-
-
-echo "sourcing proper shell file: $SHELL"
+echo "\nSourcing proper shell file: $SHELL\n"
 case "$SHELL" in
 		"$(which bash)")
 				. $HOME/.bashrc
