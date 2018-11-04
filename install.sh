@@ -16,12 +16,13 @@ apt_packages=(
     terminator
     wget
     stow
-    xstow
+#	xstow
     cowsay
     fortune
-    vim
+    neovim
     gpg
-    most
+	man
+#    most
 )
 
 vim_plugins=(
@@ -39,43 +40,41 @@ done;
 
 
 # download apt packages if not present
-for package in "${apt_packages[@]}"; do
-	if [[ ! "command -v $package" > "/dev/null" ]] ; then
-		echo -e "\n$package not detected. Running \"sudo apt-get install $package\"..."
-		sudo apt-get install -y "$package"
-	fi
-done;
+#for package in "${apt_packages[@]}"; do
+		sudo apt install -y "${apt_packages[@]}"
+#done;
 
-# git clone all plugins
 echo -e "\nre-initializing vim-plugins...\n"
-cd vim/.vim/bundle
+
+# cd to vim bundle directory for plugin installations
+pushd vim/.vim/bundle > /dev/null
+
+# git clones all specified plugins
 for plugin in "${vim_plugins[@]}"; do
 		plugin_dir=$(echo "$plugin" | awk -F'\/' '{ print $2 }')
 
-		# git clones plugin if plugin folder is empty.
-		if [ ! "$(ls -A $plugin_dir)" ]; then
+		# only if plugin folder is empty. 
+		# SIDENOTE: is this necessary? Why not just git clone them w/o the isEmpty check?
+		#if [ ! "$(ls -A $plugin_dir)" ]; then
 				echo -e "\ngit clone https://github.com/$plugin"
 				git clone "https://github.com/$plugin"
-		fi;
+		#fi;
 done;
+popd > /dev/null
 	
 
+# the important part here: symlink all packages
 echo -e "\nSynchronizing stowed packages...\n"
-
-# initialize all dotfiles and their respective symlinks
-for dot_file in $(ls -dA  */ | awk -F'\/' '{print $5}'); do
-    echo -e "stow $dot_file"
-    stow -R $dot_file
-done
+stow -Sv */
 
 
-echo "\nSourcing proper shell file: $SHELL\n"
+echo "Sourcing .$SHELL"
 case "$SHELL" in
 		"$(which bash)")
-				. $HOME/.bashrc
+				source $HOME/.bashrc
 				;;
 		"$(which zsh)")
-				. $HOME/.zshrc
+				source $HOME/.zshrc
 				;;
 		*)
 
