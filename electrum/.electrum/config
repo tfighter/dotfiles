@@ -1,5 +1,5 @@
 {
-    "alias": "rehabrowing",
+    "alias": "",
     "auto_connect": true,
     "config_version": 3,
     "console-history": [],
@@ -8,19 +8,20 @@
     "depth_level": 4,
     "dynamic_fees": true,
     "fiat_address": true,
-    "gui_last_wallet": "/home/av8t8r/.electrum/wallets/default_wallet",
-    "history_rates": false,
+    "gui_last_wallet": "/home/8v8t8r/.electrum/wallets/default_wallet",
+    "history_rates": true,
     "is_maximized": false,
     "mempool_fees": true,
     "num_zeros": 5,
+    "qt_gui_color_theme": "dark",
     "recently_open": [
-        "/home/8v8t8r/.electrum/wallets/wallet_1",
         "/home/8v8t8r/.electrum/wallets/default_wallet",
+        "/home/8v8t8r/.electrum/wallets/wallet_1",
         "/home/av8t8r/.electrum/wallets/default_wallet"
     ],
     "rpcpassword": "jYGDgrjAP4ET1nFmGg4lWQ==",
     "rpcuser": "user",
     "show_addresses_tab": true,
-    "use_exchange": "BitPay",
+    "use_exchange": "BitcoinAverage",
     "use_exchange_rate": true
 }

@@ -4,4 +4,6 @@ set rnu
 colorscheme molokai
 
 " tab settings
-set tabstop=4
+set softtabstop=2
+set noexpandtab
+set shiftwidth=2
