@@ -13,3 +13,5 @@
 	up = "!git pull --rebase --prune $@ && git submodule update --init --recursive"
 [push]
 	default = simple
+[core]
+	editor = vim
