@@ -97,7 +97,7 @@ alias l='ls -CF'
 
 # Add an "alert" alias for long running commandssource  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert="notify-send --urgency=low -i \"$([ $? = 0 ] && echo terminal || echo error)\" \"$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'\')\""
 
 # Alias definitions and various other files to source.
 # 
@@ -137,3 +137,4 @@ fi
 # bash completion
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
   source /usr/local/share/bash-completion/bash_completion
+fish

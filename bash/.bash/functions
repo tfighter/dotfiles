@@ -5,3 +5,11 @@ grb()
     git rebase -i HEAD~$@
 }
 
+mrchromebox_tech()
+{
+  if [[ "$(which crew)" ]]; then
+    pushd ~; curl -LO https://mrchromebox.tech/firmware-util.sh && sudo bash firmware-util.sh
+    popd
+  else echo "[Error] this command should be run from a Chromebook's native crosh shell only."
+  fi
+}

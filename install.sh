@@ -74,5 +74,9 @@ case "$SHELL" in
     exit -1
 esac
 
+echo "Setting default shell to fish"
+chsh -s "/bin/fish"
+
 echo -e "\nDone!"
+
 
