@@ -134,4 +134,6 @@ fi
 
 [[ -f ${HOME}/.adb-fastboot.sh ]] && source ${HOME}/.adb-fastboot.sh
 
-fortune | cowsay
+# bash completion
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
+  source /usr/local/share/bash-completion/bash_completion

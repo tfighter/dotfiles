@@ -1,15 +1,14 @@
 #!/bin/bash
 
 apt_packages=(
-terminator
+#terminator
 wget
 stow
-cowsay
-fortune
 neovim
-gpg
-man
-#    most
+gnupg
+mandb
+fish
+bash_completion
 )
 
 vim_plugins=(
@@ -26,7 +25,7 @@ for dir in */; do
   pushd $dir > /dev/null
   for dfile in .*; do
     if [[ ! -e "$HOME/.$dfile" ]]; then
-      mv "$HOME/$dfile" "$HOME/$dfile.bak"
+      mv "$HOME/$dfile" "$HOME/$dfile.bak" &> /dev/null
     fi; 
   done
   popd > /dev/null
@@ -40,14 +39,18 @@ for dot_file in "${to_backup[@]}"; do
 done
 
 # download apt packages if not present
-sudo apt install -y "${apt_packages[@]}"
+if [[ "$(which apt)" ]];
+  then sudo apt install -y "${apt_packages[@]}"
+elif [[ "$(which crew)" ]];
+  then crew install "${apt_packages[@]}"
+else exit -1; fi
 
 echo -e "\nRe-initializing vim-plugins...\n"
 
 # git clones all specified plugins
 pushd vim/.vim/bundle > /dev/null
 for plugin in "${vim_plugins[@]}"; do
-  git submodule add "https://github.com/$plugin" $plugin
+  git clone "https://github.com/$plugin" &> /dev/null
 done
 popd > /dev/null
 
