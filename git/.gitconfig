@@ -11,7 +11,12 @@
 	dag = "!git lg2"    # "log --graph --pretty=oneline --abbrev-commit"
 	ec = "config --global -e"
 	up = "!git pull --rebase --prune $@ && git submodule update --init --recursive"
+	d = difftool
 [push]
 	default = simple
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
 [core]
 	editor = vim

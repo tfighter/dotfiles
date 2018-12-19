@@ -1,20 +1,19 @@
 #!/bin/bash
 
 apt_packages=(
-#terminator
-wget
-stow
-neovim
-gnupg
-mandb
-fish
-bash_completion
+  #wget #DEPRECATED on crosh
+  terminator
+  stow
+  vim
+  gnupg
+  mandb
+  bash_completion
 )
 
 vim_plugins=(
-rafi/awesome-vim-colorschemes
-yuttie/comfortable-motion.vim
-scrooloose/nerdtree
+  rafi/awesome-vim-colorschemes
+  yuttie/comfortable-motion.vim
+  scrooloose/nerdtree
 )
 
 # unstow first
@@ -31,21 +30,27 @@ for dir in */; do
   popd > /dev/null
 done
 
-for dot_file in "${to_backup[@]}"; do
-  if [[ ! -L "$HOME/$dot_file" ]]; then
-    echo "Backed up $dot_file to $dot_file.bak"
-    mv "$HOME/$dot_file" "$HOME/$dot_file.bak"
+# backup preexisting dotfiles before the stow command auto installs this dotfile repo
+for d_file in "${to_backup[@]}"; do
+  if [[ ! -L "$HOME/$d_file" ]]; then
+    echo "Backed up $d_file to $d_file.bak"
+    mv "$HOME/$d_file" "$HOME/$d_file.bak"
   fi;
 done
 
 # download apt packages if not present
-if [[ "$(which apt)" ]];
-  then sudo apt install -y "${apt_packages[@]}"
-elif [[ "$(which crew)" ]];
-  then crew install "${apt_packages[@]}"
-else exit -1; fi
+for pkg in "${apt_packages[@]}"; do
+  if [[ "$(which apt)" ]];
+    then sudo apt install -y "$pkg"
+  elif [[ "$(which crew)" ]];
+    then crew install "$pkg"
+  else
+    echo "[ERROR] Can't locate which package repo to use."
+    exit -1;
+  fi;
+done
 
-echo -e "\nRe-initializing vim-plugins...\n"
+echo "========    Re-initializing vim-plugins...    ========"
 
 # git clones all specified plugins
 pushd vim/.vim/bundle > /dev/null
@@ -56,9 +61,8 @@ popd > /dev/null
 
 
 # the important part here: symlink all packages
-echo -e "\nSynchronizing stowed packages...\n"
+echo "========    Synchronizing stowed packages...    ========"
 stow -Sv */
-
 
 echo "Sourcing .$SHELL"
 case "$SHELL" in
@@ -70,13 +74,14 @@ case "$SHELL" in
     ;;
   *)
 
-    echo -e "[ERROR] Can't locate proper shell file to source from"
+    echo "[ERROR] Can't locate proper shell file to source from"
     exit -1
 esac
 
-echo "Setting default shell to fish"
-chsh -s "/bin/fish"
+#initializing man pages & set $PAGER
+export PAGER="$(which less)"
+mandb -pst
 
-echo -e "\nDone!"
+echo "========    Done!    ========"
 
 
