@@ -1,9 +1,9 @@
 #!/bin/bash
 
 apt_packages=(
-  #wget #DEPRECATED on crosh
-  terminator
-  stow
+  curl
+  #terminator
+  xterm
   vim
   gnupg
   mandb
@@ -14,10 +14,8 @@ vim_plugins=(
   rafi/awesome-vim-colorschemes
   yuttie/comfortable-motion.vim
   scrooloose/nerdtree
+  tfighter/dotfiles
 )
-
-# unstow first
-stow -D */
 
 # backup important dotfile(s) if it's not a symlink
 for dir in */; do
@@ -40,8 +38,8 @@ done
 
 # download apt packages if not present
 for pkg in "${apt_packages[@]}"; do
-  if [[ "$(which apt)" ]];
-    then sudo apt install -y "$pkg"
+  if [[ "$(which apt-get)" ]];
+    then sudo apt-get install -y "$pkg"
   elif [[ "$(which crew)" ]];
     then crew install "$pkg"
   else
@@ -55,14 +53,17 @@ echo "========    Re-initializing vim-plugins..."
 # git clones all specified plugins
 pushd vim/.vim/bundle > /dev/null
 for plugin in "${vim_plugins[@]}"; do
-  git clone "https://github.com/$plugin" &> /dev/null
+  git clone "https://github.com/$plugin" 
 done
 popd > /dev/null
 
+if [[ $pwd != ~/ ]]; then
+  cd dotfiles;
+  for i in $(echo */.*); do 
+    ln -rs "$i"  "~/$(echo $i | cut -d '\/' -f 2)"; 
+  done
+fi
 
-# the important part here: symlink all packages
-echo "========    Synchronizing stowed packages..."
-stow -Sv */
 
 echo "Sourcing .$SHELL"
 case "$SHELL" in
@@ -73,14 +74,13 @@ case "$SHELL" in
     source $HOME/.zshrc
     ;;
   *)
-
     echo "[ERROR] Can't locate proper shell file to source from"
     exit -1
 esac
 
 #initializing man pages & set $PAGER
 export PAGER="$(which less)"
-mandb -pst
+mandb
 
 echo "========    Done!"
 
