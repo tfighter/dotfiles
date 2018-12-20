@@ -50,7 +50,7 @@ for pkg in "${apt_packages[@]}"; do
   fi;
 done
 
-echo "========    Re-initializing vim-plugins...    ========"
+echo "========    Re-initializing vim-plugins..."
 
 # git clones all specified plugins
 pushd vim/.vim/bundle > /dev/null
@@ -61,7 +61,7 @@ popd > /dev/null
 
 
 # the important part here: symlink all packages
-echo "========    Synchronizing stowed packages...    ========"
+echo "========    Synchronizing stowed packages..."
 stow -Sv */
 
 echo "Sourcing .$SHELL"
@@ -82,6 +82,6 @@ esac
 export PAGER="$(which less)"
 mandb -pst
 
-echo "========    Done!    ========"
+echo "========    Done!"
 
 
