@@ -1,8 +1,10 @@
 #!/bin/bash
 
+DOTFILE=$PWD
+
 apt_packages=(
   curl
-  #terminator
+  terminator
   xterm
   vim
   gnupg
@@ -51,18 +53,12 @@ done
 echo "========    Re-initializing vim-plugins..."
 
 # git clones all specified plugins
-pushd vim/.vim/bundle > /dev/null
 for plugin in "${vim_plugins[@]}"; do
-  git clone "https://github.com/$plugin" 
+  git clone "https://github.com/$plugin" "vim/.vim/bundle/$plugin"
 done
-popd > /dev/null
 
-if [[ $pwd != ~/ ]]; then
-  cd dotfiles;
-  for i in $(echo */.*); do 
-    ln -rs "$i"  "~/$(echo $i | cut -d '\/' -f 2)"; 
-  done
-fi
+# "magic" one liner to symlink all dotfiles
+ln --force -rsbv $DOTFILE/config/.* $HOME/
 
 
 echo "Sourcing .$SHELL"
@@ -80,7 +76,6 @@ esac
 
 #initializing man pages & set $PAGER
 export PAGER="$(which less)"
-mandb
 
 echo "========    Done!"
 
