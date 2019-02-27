@@ -4,6 +4,7 @@ DOTFILE=$PWD
 
 apt_packages=(
   curl
+  wget
   terminator
   xterm
   vim
@@ -16,27 +17,19 @@ vim_plugins=(
   rafi/awesome-vim-colorschemes
   yuttie/comfortable-motion.vim
   scrooloose/nerdtree
-  tfighter/dotfiles
 )
 
-# backup important dotfile(s) if it's not a symlink
-for dir in */; do
-  pushd $dir > /dev/null
-  for dfile in .*; do
-    if [[ ! -e "$HOME/.$dfile" ]]; then
-      mv "$HOME/$dfile" "$HOME/$dfile.bak" &> /dev/null
-    fi; 
-  done
-  popd > /dev/null
-done
 
-# backup preexisting dotfiles before the stow command auto installs this dotfile repo
-for d_file in "${to_backup[@]}"; do
-  if [[ ! -L "$HOME/$d_file" ]]; then
-    echo "Backed up $d_file to $d_file.bak"
-    mv "$HOME/$d_file" "$HOME/$d_file.bak"
-  fi;
+# "magic" one liner to symlink all dotfiles
+ln --force -rsbv $DOTFILE/config/.* $HOME/
+
+# git clones all specified plugins
+pushd $HOME/.vim/bundle/
+for plugin in "${vim_plugins[@]}"; do
+  git clone "https://github.com/$plugin"
 done
+popd
+
 
 # download apt packages if not present
 for pkg in "${apt_packages[@]}"; do
@@ -51,14 +44,6 @@ for pkg in "${apt_packages[@]}"; do
 done
 
 echo "========    Re-initializing vim-plugins..."
-
-# git clones all specified plugins
-for plugin in "${vim_plugins[@]}"; do
-  git clone "https://github.com/$plugin" "vim/.vim/bundle/$plugin"
-done
-
-# "magic" one liner to symlink all dotfiles
-ln --force -rsbv $DOTFILE/config/.* $HOME/
 
 
 echo "Sourcing .$SHELL"
@@ -78,5 +63,4 @@ esac
 export PAGER="$(which less)"
 
 echo "========    Done!"
-
 
