@@ -10,3 +10,4 @@ id_rsa
 **/Cache*
 **/logs*
 **/nerdtree
+**/.vim/bundle/*

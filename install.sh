@@ -17,6 +17,8 @@ vim_plugins=(
   rafi/awesome-vim-colorschemes
   yuttie/comfortable-motion.vim
   scrooloose/nerdtree
+  tpope/vim-surround
+  valloric/youcompleteme
 )
 
 
