@@ -8,7 +8,7 @@ set noexpandtab
 set shiftwidth=4
 
 " no temp backup '~' file
-set backup!
+set nobackup
 
 " colorscheme
 set background=dark
