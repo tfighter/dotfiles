@@ -1,0 +1,30 @@
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  com = checkout master
+  fe = fetch origin
+  bn = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
+  rb = rebase
+  rbm = rebase master
+  pr = !sh -c 'BRANCH_NAME=$(git bn) && git co $0 && git fe && git merge --ff-only origin/$0 && git co $BRANCH_NAME && git rb $0'
+  pmr = !git pr master
+  df = diff
+  who = shortlog -s --
+  hr = reset --hard
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  rbc = rebase --continue
+  mt = mergetool
+  unstage = reset HEAD $1
+  stage = add -A
+  addall = add *
+  ff = !sh -c 'BRANCH_NAME=$(git bn) && git merge --ff-only origin/$BRANCH_NAME'
+  nuke = !git clean -dxf && git checkout -f
+  root = rev-parse --show-toplevel
+
+[diff]
+  tool = vimdiff
+
+[mergetool "vimdiff"]
+  path = /usr/local/bin/vim -d

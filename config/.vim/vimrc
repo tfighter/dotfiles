@@ -1,0 +1,20 @@
+""" VIM plugin manager: plugged.vim
+"     source: https://github.com/junegunn/vim-plug
+source $HOME/.vim/personal_plug.vim
+
+
+""" Personal Settings
+" Here's where we store all:
+"   aliases
+"   set
+"   bind
+"   etc
+""" 
+source $HOME/.vim/personal_settings.vim
+
+
+""" vimrc blatently taken from other users 
+" 1) source: https://gist.github.com/aa0a487dca0788bb90d4f80aed0e0b30.git
+source $HOME/.vim/pengo98.vim
+
+

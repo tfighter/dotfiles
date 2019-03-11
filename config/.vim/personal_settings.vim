@@ -2,17 +2,13 @@
 set nu
 set rnu
 
-" tab settings
-set softtabstop=4
-set noexpandtab
-set shiftwidth=4
-
 " no temp backup '~' file
 set nobackup
 
 " colorscheme
 set background=dark
-colorscheme solarized8
+colorscheme challenger_deep
+" colorscheme molokai
 
 "let dtfile = $HOME/dotfiles/dotfiles
 "
