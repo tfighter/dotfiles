@@ -6,7 +6,7 @@
 # *~
 id_rsa
 .netrwhist
-private/*
+# private/*
 *.key
 **/Cache*
 **/logs*
