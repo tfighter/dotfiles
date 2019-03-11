@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dfiles=$("git rev-parse --show-toplevel")/config
+dfiles=$(git rev-parse --show-toplevel)/config
 
 apt_packages=(
 curl
@@ -16,7 +16,7 @@ bash_completion
 
 # "magic" one liner to symlink all dotfiles
 pushd $dfiles
-ln --force -rsb .* $HOME/
+ln --force -Lrsb .* $HOME/
 popd
 
 
@@ -27,12 +27,12 @@ for pkg in "${apt_packages[@]}"; do
     elif [[ "$(which crew)" ]]; then 
         yes | crew install "$pkg"
     else
-        echo "[ERROR] Can't locate which package repo to use."
+        echo -e "[ERROR] Can't locate which package repo to use.\n"
         exit -1;
     fi;
 done
 
-echo "========    Re-initializing vim-plugins..."
+echo -e "\nRe-initializing vim-plugins...\n"
 
 
 echo "Sourcing $SHELL"
@@ -44,9 +44,9 @@ case "$SHELL" in
         source $HOME/.zshrc
         ;;
     *)
-        echo "[ERROR] Can't locate proper shell file to source from"
+        echo -e "[ERROR] Can't locate proper shell file to source from\n"
         exit -1
 esac
 
-echo "========    Done!"
+echo -e "\nDone!"
 
