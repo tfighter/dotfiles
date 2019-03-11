@@ -6,8 +6,10 @@
 # *~
 id_rsa
 .netrwhist
+private/*
 *.key
 **/Cache*
 **/logs*
 **/nerdtree
 **/.vim/bundle/*
+
