@@ -1,3 +1,7 @@
+[user]
+  email = tai.nguyen.1220@gmail.com
+  name = TFighter
+
 [alias]
   st = status
   ci = commit
